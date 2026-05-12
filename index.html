@@ -142,6 +142,8 @@
       display: flex;
       flex-direction: column;
       gap: 2px;
+      flex: 1;
+      min-width: 0;
     }
 
     .contact-btn-type {
@@ -156,6 +158,8 @@
       font-weight: 500;
       font-size: 1rem;
       color: var(--white);
+      word-break: break-all;
+      white-space: normal;
     }
 
     /* ── Corner bracket accents ── */
@@ -211,9 +215,71 @@
         </span>
       </a>
 
+      <!-- Card number (tap to copy) -->
+      <button class="contact-btn" onclick="copyCard(this)" type="button" style="width:100%;text-align:left;cursor:pointer">
+        <svg class="contact-btn-icon" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+          <rect x="1" y="4" width="22" height="16" rx="2" ry="2"/>
+          <line x1="1" y1="10" x2="23" y2="10"/>
+        </svg>
+        <span class="contact-btn-label">
+          <span class="contact-btn-type">No. de tarjeta BANJERCITO</span>
+          <span class="contact-btn-value" id="card-value">4913 4490 5553 6996</span>
+        </span>
+      </button>
+
+      <!-- Save contact -->
+      <button class="contact-btn" onclick="saveContact()" type="button" style="width:100%;justify-content:center;background:var(--orange);border-color:var(--orange);font-family:var(--strong);font-weight:700;letter-spacing:2px;font-size:0.78rem;text-transform:uppercase;cursor:pointer">
+        <svg class="contact-btn-icon" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+          <path d="M17 21H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h7l5 5v11a2 2 0 0 1-2 2z"/>
+          <polyline points="17 21 17 13 7 13 7 21"/>
+          <polyline points="7 3 7 8 15 8"/>
+        </svg>
+        Guardar contacto
+      </button>
+
     </div>
 
   </div>
+
+  <script>
+    function copyCard(btn) {
+      navigator.clipboard.writeText('4913449055536996').then(function() {
+        var val = btn.querySelector('#card-value');
+        var orig = val.textContent;
+        val.textContent = '¡Copiado!';
+        setTimeout(function() { val.textContent = orig; }, 2000);
+      }).catch(function() {
+        var range = document.createRange();
+        range.selectNode(btn.querySelector('#card-value'));
+        window.getSelection().removeAllRanges();
+        window.getSelection().addRange(range);
+      });
+    }
+
+    function saveContact() {
+      var vcard = [
+        'BEGIN:VCARD',
+        'VERSION:3.0',
+        'FN:Israel Contreras',
+        'N:Contreras;Israel;;;',
+        'ORG:Remodelaciones El Negro',
+        'TEL;TYPE=CELL,VOICE:+5217771113757',
+        'NOTE:No. tarjeta BANJERCITO: 4913449055536996',
+        'END:VCARD'
+      ].join('\r\n');
+      var blob = new Blob([vcard], { type: 'text/vcard' });
+      var url = URL.createObjectURL(blob);
+      var a = document.createElement('a');
+      a.href = url;
+      a.download = 'Israel-Contreras-Remodelaciones.vcf';
+      a.click();
+      URL.revokeObjectURL(url);
+    }
+  </script>
+
+  <footer style="text-align:center;padding:20px 0 12px">
+    <a href="https://www.eurekawebsites.tech/" target="_blank" rel="noopener noreferrer" style="font-size:0.65rem;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,0.3);text-decoration:none;transition:color 0.2s" onmouseover="this.style.color='rgba(255,255,255,0.7)'" onmouseout="this.style.color='rgba(255,255,255,0.3)'">POWERED BY EUREKA WEBSITES</a>
+  </footer>
 
 </body>
 </html>
