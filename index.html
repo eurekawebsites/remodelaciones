@@ -22,12 +22,15 @@
     }
 
     body {
-      background: #d6d6d6;
+      background: #0a0c10;
       min-height: 100vh;
       padding: 20px 20px 24px;
       font-family: var(--sans);
       -webkit-font-smoothing: antialiased;
       overflow-x: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
     /* ── Card shell ── */
@@ -36,17 +39,19 @@
       max-width: 420px;
       margin-left: auto;
       margin-right: auto;
-      border-radius: 6px;
+      border-radius: 8px;
       overflow: hidden;
-      box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+      border: 1px solid rgba(232,98,26,0.25);
+      box-shadow: 0 0 40px rgba(232,98,26,0.1), 0 8px 40px rgba(0,0,0,0.7);
     }
 
-    /* ── Top section — white with logo ── */
+    /* ── Top section ── */
     .card-top {
       padding: 28px 32px 24px;
       text-align: center;
       position: relative;
-      background: var(--white);
+      background: linear-gradient(160deg, #1a0d05 0%, #111318 100%);
+      border-bottom: 1px solid rgba(232,98,26,0.2);
     }
 
     .card-icon {
@@ -62,8 +67,10 @@
       font-size: clamp(1.3rem, 5vw, 1.6rem);
       letter-spacing: 1px;
       text-transform: uppercase;
-      background: var(--charcoal);
-      color: var(--white);
+      background: rgba(232,98,26,0.12);
+      color: var(--orange);
+      border-top: 1px solid rgba(232,98,26,0.2);
+      border-bottom: 1px solid rgba(232,98,26,0.2);
       padding: 12px 32px;
       margin: 0 -32px 20px;
     }
@@ -75,57 +82,45 @@
       line-height: 1.2;
       letter-spacing: 3px;
       text-transform: uppercase;
-      color: var(--charcoal);
-      opacity: 1;
+      color: var(--white);
       margin-bottom: 0;
     }
 
-    /* ── Services label — on charcoal ── */
-    .card-services-label {
-      padding: 16px 20px 6px;
-      text-align: center;
-      font-family: var(--strong);
-      font-weight: 700;
-      font-size: 1rem;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: var(--white);
-      background: var(--charcoal);
-    }
-
     /* ── Orange services strip ── */
+    .card-services-label { display: none; }
+
     .card-services {
-      padding: 12px 20px;
+      padding: 11px 20px;
       text-align: center;
       background: var(--orange);
       font-family: var(--strong);
-      font-weight: 500;
-      font-size: 0.7rem;
+      font-weight: 700;
+      font-size: 0.65rem;
       letter-spacing: 1.5px;
       text-transform: uppercase;
       color: var(--white);
     }
 
-    /* ── Contact buttons — on charcoal ── */
+    /* ── Contact buttons ── */
     .card-contact {
       padding: 16px 24px 24px;
       display: flex;
       flex-direction: column;
       gap: 9px;
-      background: var(--charcoal);
+      background: #111318;
     }
 
     .contact-btn {
       display: flex;
       align-items: center;
       gap: 12px;
-      padding: 11px 16px;
-      border-radius: 3px;
+      padding: 13px 16px;
+      border-radius: 6px;
       font-family: var(--sans);
       font-size: 0.82rem;
-      transition: opacity 0.18s ease;
-      background: rgba(255,255,255,0.07);
-      border: 1px solid rgba(255,255,255,0.12);
+      transition: opacity 0.18s ease, transform 0.1s ease;
+      background: #181b22;
+      border: 1px solid rgba(232,98,26,0.15);
       color: var(--white);
     }
 
@@ -146,11 +141,13 @@
       min-width: 0;
     }
 
+    .contact-btn:hover { opacity: 0.75; transform: translateY(-1px); }
+
     .contact-btn-type {
       font-size: 0.62rem;
       letter-spacing: 2px;
       text-transform: uppercase;
-      color: var(--orange);
+      color: rgba(232,98,26,0.7);
     }
 
     .contact-btn-value {
@@ -278,7 +275,7 @@
   </script>
 
   <footer style="text-align:center;padding:20px 0 12px">
-    <a href="https://www.eurekawebsites.tech/" target="_blank" rel="noopener noreferrer" style="font-size:0.65rem;letter-spacing:1.5px;text-transform:uppercase;color:rgba(0,0,0,0.45);text-decoration:none;transition:color 0.2s" onmouseover="this.style.color='rgba(0,0,0,0.8)'" onmouseout="this.style.color='rgba(0,0,0,0.45)'">POWERED BY EUREKA WEBSITES</a>
+    <a href="https://www.eurekawebsites.tech/" target="_blank" rel="noopener noreferrer" style="font-size:0.65rem;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,0.25);text-decoration:none;transition:color 0.2s" onmouseover="this.style.color='rgba(255,255,255,0.6)'" onmouseout="this.style.color='rgba(255,255,255,0.25)'">POWERED BY EUREKA WEBSITES</a>
   </footer>
 
 </body>
