@@ -1,5 +1,6 @@
 {
   "hosting": {
+    "site": "remodelaciones",
     "public": ".",
     "ignore": [
       "firebase.json",
